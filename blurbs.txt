@@ -1,0 +1,13 @@
+Founded in 1994, the Blue Lights are the heartthrobs of Colby's a cappella community. 
+The Blue Lights are all about good vibes and performing to entertain, working just hard 
+enough to sound good while still remembering to have fun with it. Read on for concert 
+footage, announcements, and an inside look at what it's like to be a Blue Light.
+
+
+
+Requests:
+   -member page with bios
+   -page for concert footage
+   -calendar page
+   -email list
+   -backend support for future blue lights to edit the site
