@@ -1,0 +1,148 @@
+:root {
+    --bkg: #0072FF;
+    --bkg-dark: #0048FF;
+    --yellow: #F9FE00;
+    --dark: #140654;
+    --light: #F9FE00;
+    --white: #FFFFFF;
+     
+}
+
+body {
+    background-color: var(--bkg);
+    color: var(--white);
+    margin: 0;
+    padding: 0;
+    font-family: 'Varela Round', sans-serif;
+    padding-bottom: 150px;
+}
+
+/* Formating Header */
+
+header {
+    color: var(--white);
+    width: 100%;
+    height: 109px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding-top: 5px;
+}
+
+.logo {
+    width: 109px;
+    height: 109px;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+h1 {
+    font-family: 'Damion', cursive;    
+    font-size: 5vw;
+    margin:0;
+    flex: 2;
+    min-width: 267px
+}
+
+.nav li {
+    display: inline;
+    margin-right: 40px;
+
+}
+
+.nav li a {
+    color: var(--white);
+    text-decoration: none;
+    color: var(--yellow);
+    font-size: 3vw;
+    font-family: 'Damion', cursive;
+}
+
+
+/* Formating Footer */
+
+.footerSpacer {
+    aspect-ratio: 900/50;
+    width:100%;
+    padding: 0;
+    margin: 0;
+    position:fixed;
+    bottom:70px;    
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url(./media/footerWaves.svg);
+}
+
+footer {
+    background-color: var(--dark);
+    color: var(--yellow);
+    width: 100%;
+    height: 71px;
+    position: fixed;
+    bottom: 0;
+}
+
+.footerFlex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.socialMedia {
+    margin-left:auto;
+    margin-right:10px;
+}
+
+footer p {
+    font-size: 1.5vw;
+    width:20%;
+    margin-left: 10px;
+}
+
+#emailInput {
+    border-style: none none solid none;
+    border-color: var(--yellow);
+    background-color: var(--dark);
+    color: var(--yellow);
+
+}
+
+#emailInput:focus {
+    outline: none;
+}
+
+#emailButton {
+    background-color: var(--dark);
+    color: var(--yellow);
+    border-style: solid;
+    border-color: var(--yellow);
+    border-width: 1px;
+    font-size: 1.5vw;
+    font-family: 'Damion', cursive;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+
+
+
+
+/* Section general formating */
+
+section{
+    background-color: var(--white);
+    border: 3px solid var(--bkg-dark);
+    border-radius: 15px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+
+
