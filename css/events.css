@@ -1,0 +1,35 @@
+.event {
+    color: var(--bkg-dark);
+    padding: 10px;
+}
+
+h2 {
+    font-size: 30pt;
+    font-family: 'Damion', cursive;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#fakeImage {
+    background-color: red;
+    width: 20%;
+    height: 350px;
+    display: inline-block;
+    color:white;
+}
+
+.eventText {
+    float: right;
+    width: 78%;
+    margin-top:auto;
+    margin-bottom:auto;
+}
+
+.eventDetails {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+

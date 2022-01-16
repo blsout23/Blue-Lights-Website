@@ -42,7 +42,22 @@ h1 {
     font-size: 5vw;
     margin:0;
     flex: 2;
-    min-width: 267px
+    min-width: 267px;
+    color: var(--white);
+}
+
+#logoLink {
+    margin-left: 2%;
+    margin-right: 2%; 
+}
+
+
+header a {
+    text-decoration: none;
+}
+
+.nav {
+    margin-left: auto;
 }
 
 .nav li {
@@ -52,8 +67,6 @@ h1 {
 }
 
 .nav li a {
-    color: var(--white);
-    text-decoration: none;
     color: var(--yellow);
     font-size: 3vw;
     font-family: 'Damion', cursive;

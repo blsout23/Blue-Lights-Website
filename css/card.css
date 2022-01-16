@@ -1,0 +1,57 @@
+
+/* 
+Code adapted from tutorial on firship.io
+https://fireship.io/lessons/css-cards-animated/
+*/
+
+#membersContainer {
+    display: flex;
+    padding: 5px;
+    overflow-x: scroll;
+    height: 230px;
+    align-items: flex-end;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-left: 15px;
+}
+
+
+.member {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    height: 180px;
+    width: 30px;
+    min-width: 250px;
+    padding: 10px;
+    background-color: var(--bkg-dark);
+    border-radius: 16px;
+    box-shadow: -10px 0 6px var(--dark);
+
+    transition: .2s;
+}
+
+.member:hover {
+    transform: translateY(-1rem);
+}
+
+.member:hover~.member {
+    transform: translateX(130px);
+}
+
+.member:not(:first-child) {
+    margin-left: -130px;
+}
+
+.member img {
+    height: 100%;
+    flex: 10;
+}
+
+.member p {
+    flex: 1;
+    font-size: 14pt;
+    color: var(--yellow);
+    margin: 0;
+    padding: 0;
+}
