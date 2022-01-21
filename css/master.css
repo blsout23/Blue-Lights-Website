@@ -52,8 +52,9 @@ h1 {
 }
 
 
-header a {
+a, a:visited {
     text-decoration: none;
+    color: inherit;
 }
 
 .nav {
