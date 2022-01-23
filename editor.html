@@ -16,20 +16,23 @@
         <summary>Events</summary>
         <details>
             <summary>Add Event</summary>
-            <form>
-                <label for="event-name">Event Name</label>
-                <input type="text" id="event-name"><br>
-                <label for="event-date">Event Date</label>
-                <input type="date" id="event-date">
-                <label for="event-time">Event Time</label>
-                <input type="time" id="event-time"><br>
-                <label for="event-location">Event Location</label>
-                <input type="text" id="event-location"><br>
-                <label for="event-description">Event Description</label>
-                <textarea id="event-description"></textarea><br>
+            <form action="addEvent()">
+                <label for="title">Event Name</label>
+                <input type="text" id="title"><br>
+                <label for="date">Event Date</label>
+                <input type="date" id="date">
+                <label for="time">Event Time</label>
+                <input type="time" id="time"><br>
+                <label for="location">Event Location</label>
+                <input type="text" id="location"><br>
+                <p>Small event description will apear on home page, large will apear on full events page</p>
+                <label for="contentSmall">Event Description Small</label>
+                <textarea id="contentSmall"></textarea><br>
+                <label for="contentLarge">Event Description Large</label>
+                <textarea id="contentLarge"></textarea><br>
                 <label for="event-image">Event Image</label>
                 <input type="file" id="event-image"><br>
-                <button type="submit">Add Event</button>
+                <button type="button" id="eventSubmit">Add Event</button>
                 <button type="reset">Clear</button>
             </form>
         </details>

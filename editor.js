@@ -14,6 +14,11 @@ $(document).ready(function() {
 
     getData();
 
+    $( "#eventSubmit" ).click(function() {
+        console.log("button clicked");
+        addEvent();   
+    });
+
 });
 
 function getData(){
@@ -89,6 +94,8 @@ function renderMember(index) {
 }
 
 function renderAbout() {
+    $('#aboutContainer').empty();
+
     let aboutHTML = "<div class='about' id='about'>";
     aboutHTML += "<img src='" +about['image']+ "'>";
     aboutHTML += "<p>" +about['content1']+ "</p>";
@@ -97,4 +104,35 @@ function renderAbout() {
     aboutHTML += "</div>";
 
     $('#aboutDetails').append(aboutHTML);
+}
+
+function renderEvents() {
+    $('#eventContainer').empty();
+
+    for (let i=0; i<events.length; i++) {
+        renderEvent(i);
+    }
+}
+
+function renderMembers() {
+    $('#memberContainer').empty();
+
+    for (let i=0; i<members.length; i++) {
+        renderMember(i);
+    }
+}
+
+function addEvent(){
+    console.log("addEvent");
+    let newEvent = {};
+    newEvent['title'] = $('#title').val();
+    newEvent['location'] = $('#location').val();
+    let dateObj = new Date($( "#date" ).val() + " " + $( "#time" ).val());
+    newEvent['date'] = dateObj.getTime();
+    newEvent['contentSmall'] = $('#contentSmall').val();
+    newEvent['contentLarge'] = $('#contentLarge').val();
+    newEvent['image'] = $('#image').val();
+
+    events.unshift(newEvent);
+    renderEvents();
 }
