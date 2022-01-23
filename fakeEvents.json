@@ -1,7 +1,7 @@
 {
     "events": [
             {"title": "Blue Lights Auditions", 
-            "data": "1644530400",
+            "date": "1644530400000",
             "location": "Auditorium", 
             "image": "css/media/group2.jpg",
             "contentSmall": "Come on down for audtions to join the Colby Blue Lights. All are welcome, no skill required.",

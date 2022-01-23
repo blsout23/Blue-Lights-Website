@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="editor.js"></script>
     <title>Webpage Editor</title>
 </head>
 <body>
@@ -32,8 +34,9 @@
 
         <details>
             <summary>Edit Events</summary>
-            <!-- JS will put in all events here -->
-
+            <div id="eventContainer">
+                <!-- JS will put in all events here -->
+            </div>
         </details>
     </details>
 
@@ -59,12 +62,13 @@
 
         <details>
             <summary>Edit Memebers</summary>
-            <!-- JS will put in all events here -->
-
+            <div id="memberContainer">
+                <!-- JS will put in all members here -->
+            </div>
         </details>
     </details>
 
-    <details>
+    <details id="aboutDetails">
         <summary>Edit About</summary>
         
     </details>
