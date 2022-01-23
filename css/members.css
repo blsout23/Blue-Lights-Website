@@ -1,0 +1,16 @@
+.member {
+    color: var(--bkg-dark);
+    padding: 10px;
+}
+
+.headshot {
+    width: 250px;
+    height: 250px;
+}
+
+.memberBio {
+    float: right;
+    width: 78%;
+    margin-top:auto;
+    margin-bottom:auto;
+}
