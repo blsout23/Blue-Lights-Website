@@ -1,12 +1,7 @@
-<!-- 
+<?php
 
-Sends about data from db to browser for render
-data is sent as json in following format:
-
-
- -->
-
- <?php
+// Sends about data from db to browser for render
+// data is sent as json in following format:
 
 // For now, using temp json file instead of database
 
