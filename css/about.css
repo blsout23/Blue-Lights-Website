@@ -1,0 +1,27 @@
+.box {
+    color: var(--bkg-dark);
+    padding: 10px;}
+
+h2 {
+    font-size: 30pt;
+    font-family: 'Damion', cursive;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.boxText {
+    width: 70%;
+    margin-top:auto;
+    margin-bottom:auto;
+    float: right;
+    clear: left;
+}
+
+.groupPic {
+    border-radius: 50%;
+    width: 25%;
+    height: 25%;
+    margin: 10px  10px 0px 10px;
+    border: 3px solid var(--bkg-dark);
+}
