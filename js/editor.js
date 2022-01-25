@@ -2,9 +2,9 @@
 
 'use strict';
 
-var eventURL = "http://localhost:8000/eventDataRequest.php";
-var memberURL = "http://localhost:8000/memberDataRequest.php";
-var aboutURL = "http://localhost:8000/aboutDataRequest.php";
+var eventURL = "https://cs325.colby.edu/ebwrig23/bluelights/eventDataRequest.php";
+var memberURL = "https://cs325.colby.edu/ebwrig23/bluelights/memberDataRequest.php";
+var aboutURL = "https://cs325.colby.edu/ebwrig23/bluelights/aboutDataRequest.php";
 
 var members;
 var events;

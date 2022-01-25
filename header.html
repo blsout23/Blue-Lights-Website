@@ -1,9 +1,26 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="js/headerFooterSubmit.js"></script>
+
+
 <header>
     <a id="logoLink" href="home.php"><img class="logo" src="css/media/logo.png"></a>
     <a href="home.php"><h1>Colby Blue Lights</h1></a>
     <ul class="nav">
         <li><a href="events.php">Events</a></li>
-        <li><a href="about.php">About</a></li>
-        <li><a href="members.php">Members</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="members.html">Members</a></li>
+        <li><a href="footage.html">Videos</a></li>
+        <li>
+            <div class="dropdown">
+                <span>Sugest a Song</span>
+                <div class="dropdownContent">
+                    <form>
+                        <input type="text" id="songName" placeholder="Song Name">
+                        <input type="text" id="artist" placeholder="Artist Name">
+                        <input type="button" id="songSubmit" value="Submit">
+                    </form>
+                </div>
+            </div>
+        </li>
     </ul>
 </header>
