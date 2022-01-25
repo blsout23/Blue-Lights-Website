@@ -85,6 +85,13 @@ a, a:visited {
     display: block;
 }
 
+.songSubmitMessage {
+    font-size: 12pt;
+    font-family: 'Varela Round', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 0; 
+}
+
 
 /* Formating Footer */
 
