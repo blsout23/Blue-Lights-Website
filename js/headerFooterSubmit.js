@@ -27,8 +27,26 @@ $(document).ready(function() {
     });
 
     // Footer submit
-    $("#footerSubmit").click(function() {
-        $("#footerForm").submit();
+    $("#emailSubmit").click(function() {
+        //test is email is valid
+        let email = $("#emailInput").val();
+        let emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+        if (!(emailReg.test(email)) || email == "") {
+            $("#emailMessageContainer").html("<p class='emailMessage'>Please enter a valid email.</p>");
+        } else {
+            //Sanitize on the server side
+            $.ajax({
+                type: "POST",
+                url: emailURL,
+                data: {
+                    email: email,
+                },
+                success: function(data) {
+                    $("#emailMessageContainer").html(data);
+                    $("#emailInput").val("");
+                }
+            });
+        }
     });
 });
 
