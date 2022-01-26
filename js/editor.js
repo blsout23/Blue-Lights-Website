@@ -14,6 +14,14 @@ $(document).ready(function() {
 
     getData();
 
+    $('#addEvent').submit(function(e) {
+
+        e.preventDefault();
+        addEvent();
+        // $('#addEvent')[0].reset();
+        
+    });
+
     $( "#eventSubmit" ).click(function() {
         console.log("button clicked");
         addEvent();   
@@ -122,17 +130,36 @@ function renderMembers() {
     }
 }
 
-function addEvent(){
-    console.log("addEvent");
-    let newEvent = {};
-    newEvent['title'] = $('#title').val();
-    newEvent['location'] = $('#location').val();
-    let dateObj = new Date($( "#date" ).val() + " " + $( "#time" ).val());
-    newEvent['date'] = dateObj.getTime();
-    newEvent['contentSmall'] = $('#contentSmall').val();
-    newEvent['contentLarge'] = $('#contentLarge').val();
-    newEvent['image'] = $('#image').val();
+// function addEvent(){
+//     console.log("addEvent");
+//     let newEvent = {};
+//     newEvent['title'] = $('#title').val();
+//     newEvent['location'] = $('#location').val();
+//     let dateObj = new Date($( "#date" ).val() + " " + $( "#time" ).val());
+//     newEvent['date'] = dateObj.getTime();
+//     newEvent['contentSmall'] = $('#contentSmall').val();
+//     newEvent['contentLarge'] = $('#contentLarge').val();
+//     newEvent['image'] = $('#image').val();
 
-    events.unshift(newEvent);
-    renderEvents();
+//     events.unshift(newEvent);
+//     renderEvents();
+// }
+
+var addEventURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/addEvent.php";
+
+function addEvent(){
+    let fd = new FormData($('#addEvent')[0]);
+
+    let dateObj = new Date($( "#date" ).val() + " " + $( "#time" ).val());
+    fd.append('UNIXtime', dateObj.getTime());
+
+    $.ajax({
+        url: addEventURL,
+        type: 'POST',
+        data: fd,
+        processData: false,
+        contentType: false,
+        success: function(data) {
+            console.log(data);
+        }});
 }
