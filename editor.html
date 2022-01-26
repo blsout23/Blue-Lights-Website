@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="editor.js"></script>
+    <script src="js/editor.js"></script>
     <link rel="stylesheet" href="css/editor.css">
     <title>Webpage Editor</title>
     
@@ -16,23 +16,23 @@
         <summary>Events</summary>
         <details>
             <summary>Add Event</summary>
-            <form action="addEvent()">
+            <form id="addEvent">
                 <label for="title">Event Name</label>
-                <input type="text" id="title"><br>
+                <input type="text" name="title" id="title" required><br>
                 <label for="date">Event Date</label>
-                <input type="date" id="date">
+                <input type="date" id="date" name="date" required>
                 <label for="time">Event Time</label>
-                <input type="time" id="time"><br>
+                <input type="time"id="time" name="time" required><br>
                 <label for="location">Event Location</label>
-                <input type="text" id="location"><br>
+                <input type="text" name="location"required><br>
                 <p>Small event description will apear on home page, large will apear on full events page</p>
                 <label for="contentSmall">Event Description Small</label>
-                <textarea id="contentSmall"></textarea><br>
+                <textarea name="contentSmall" required></textarea><br>
                 <label for="contentLarge">Event Description Large</label>
-                <textarea id="contentLarge"></textarea><br>
-                <label for="event-image">Event Image</label>
-                <input type="file" id="event-image"><br>
-                <button type="button" id="eventSubmit">Add Event</button>
+                <textarea name="contentLarge" required></textarea><br>
+                <label for="image">Event Image</label>
+                <input type="file" name="image" required><br>
+                <button type="submit">Add Event</button>
                 <button type="reset">Clear</button>
             </form>
         </details>
@@ -78,7 +78,19 @@
         
     </details>
 
+    <details id="emailList">
+        <summary>Email List</summary>
+        <ul id="emailListContainer">
+            <!-- JS will put in all emails here -->
+        </ul>
+    </details>
 
+    <details id="songRequests">
+        <summary>Song Requests</summary>
+        <ul id="songRequestContainer">
+            <!-- JS will put in all song requests here -->
+        </ul>
+    </details>
 
 </body>
 </html>
