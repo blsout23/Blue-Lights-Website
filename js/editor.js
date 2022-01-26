@@ -2,7 +2,7 @@
 
 'use strict';
 
-var eventURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/eventDataRequest.php";
+var eventURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/renderEvents.php";
 var memberURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/memberDataRequest.php";
 var aboutURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/aboutDataRequest.php";
 var emailURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/getEmailList.php";
@@ -17,8 +17,6 @@ var songRequests;
 
 $(document).ready(function() {
 
-    getData();
-
     $('#addEvent').submit(function(e) {
 
         e.preventDefault();
@@ -27,134 +25,141 @@ $(document).ready(function() {
         
     });
 
+    $('#eventImageInput').focusout(function() {
+        $('#eventImageContainer').html('<img src="' + $('#eventImageInput').val() + '" />');
+    });
+
     $( "#eventSubmit" ).click(function() {
         addEvent();   
     });
+
+    $('.deleteEmail').click(deleteEmail);
+    $('.deleteSong').click(deleteSongRequest);
 });
 
-function getData(){
+// function getData(){
     
-        $.get(memberURL, function(data) {
+//         $.get(memberURL, function(data) {
             
-            members=JSON.parse(data)['members'];
+//             members=JSON.parse(data)['members'];
             
-            for (let i=0; i<members.length; i++) {
+//             for (let i=0; i<members.length; i++) {
                 
-                renderMember(i);
+//                 renderMember(i);
     
-            }
+//             }
     
-        });
+//         });
     
-        $.get(eventURL, function(data) {
+//         $.get(eventURL, function(data) {
             
-            events=JSON.parse(data)['events'];
+//             events=JSON.parse(data)['events'];
             
-            for (let i=0; i<events.length; i++) {
+//             for (let i=0; i<events.length; i++) {
                 
-                renderEvent(i);
+//                 renderEvent(i);
     
-            }
+//             }
     
-        });
+//         });
     
-        $.get(aboutURL, function(data) {
+//         $.get(aboutURL, function(data) {
             
-            about=JSON.parse(data);
-            renderAbout();
+//             about=JSON.parse(data);
+//             renderAbout();
     
-        });
+//         });
 
-        $.get(emailURL, function(data) {
-            emails = JSON.parse(data);
-            renderEmails();
-        });
+//         $.get(emailURL, function(data) {
+//             emails = JSON.parse(data);
+//             renderEmails();
+//         });
 
-        $.get(songRequestURL, function(data) {
-            songRequests = JSON.parse(data);
-            renderSongRequests();
-        });
+//         $.get(songRequestURL, function(data) {
+//             songRequests = JSON.parse(data);
+//             renderSongRequests();
+//         });
 
-}
-
-
-function renderEvent(index) {
-    let eventObj=events[index];
-
-    let eventHTML= "<div class='event' id='event" +index+"'>";
-    eventHTML += "<img src='" +eventObj['image']+ "'>";
-    eventHTML += "<h3>" +eventObj['title']+ "</h3>";
-    eventHTML += "<p>" +eventObj['location']+ "</p>";
-    let date = new Date(parseInt(eventObj['date']));
-    eventHTML += "<time datetime="+date.toISOString()+">" +date.toString()+ "</time>";
-    eventHTML += "<p>" +eventObj['contentSmall']+ "</p>";
-    eventHTML += "<p>" +eventObj['contentLarge']+ "</p>";
-    eventHTML += "</div>";
+// }
 
 
+// function renderEvent(index) {
+//     let eventObj=events[index];
 
-    $('#eventContainer').append(eventHTML);
+//     let eventHTML= "<div class='event' id='event" +index+"'>";
+//     eventHTML += "<img src='" +eventObj['image']+ "'>";
+//     eventHTML += "<h3>" +eventObj['title']+ "</h3>";
+//     eventHTML += "<p>" +eventObj['location']+ "</p>";
+//     let date = new Date(parseInt(eventObj['date']));
+//     eventHTML += "<time datetime="+date.toISOString()+">" +date.toString()+ "</time>";
+//     eventHTML += "<p>" +eventObj['contentSmall']+ "</p>";
+//     eventHTML += "<p>" +eventObj['contentLarge']+ "</p>";
+//     eventHTML += "</div>";
 
-}
 
 
-function renderMember(index) {
-    let member = members[index];
+//     $('#eventContainer').append(eventHTML);
 
-    let memberHTML = "<div class='member' id='member" +index+"'>";
-    memberHTML += "<img src='" +member['image']+ "'>";
-    memberHTML += "<h3>" +member['firstName']+ "</h3>";
-    memberHTML += "<h3>" +member['lastName']+ "</h3>";
-    memberHTML += "<p>" +member['classYear']+ "</p>";
-    memberHTML += "<p>" +member['bio']+ "</p>";
-    memberHTML += "</div>";
+// }
 
-    $('#memberContainer').append(memberHTML);
-}
 
-function renderAbout() {
-    $('#aboutContainer').empty();
+// function renderMember(index) {
+//     let member = members[index];
 
-    let aboutHTML = "<div class='about' id='about'>";
-    aboutHTML += "<img src='" +about['image']+ "'>";
-    aboutHTML += "<p>" +about['content1']+ "</p>";
-    aboutHTML += "<p>" +about['content2']+ "</p>";
-    aboutHTML += "<p>" +about['content3']+ "</p>";
-    aboutHTML += "</div>";
+//     let memberHTML = "<div class='member' id='member" +index+"'>";
+//     memberHTML += "<img src='" +member['image']+ "'>";
+//     memberHTML += "<h3>" +member['firstName']+ "</h3>";
+//     memberHTML += "<h3>" +member['lastName']+ "</h3>";
+//     memberHTML += "<p>" +member['classYear']+ "</p>";
+//     memberHTML += "<p>" +member['bio']+ "</p>";
+//     memberHTML += "</div>";
 
-    $('#aboutDetails').append(aboutHTML);
-}
+//     $('#memberContainer').append(memberHTML);
+// }
 
-function renderEvents() {
-    $('#eventContainer').empty();
+// function renderAbout() {
+//     $('#aboutContainer').empty();
 
-    for (let i=0; i<events.length; i++) {
-        renderEvent(i);
-    }
-}
+//     let aboutHTML = "<div class='about' id='about'>";
+//     aboutHTML += "<img src='" +about['image']+ "'>";
+//     aboutHTML += "<p>" +about['content1']+ "</p>";
+//     aboutHTML += "<p>" +about['content2']+ "</p>";
+//     aboutHTML += "<p>" +about['content3']+ "</p>";
+//     aboutHTML += "</div>";
 
-function renderMembers() {
-    $('#memberContainer').empty();
+//     $('#aboutDetails').append(aboutHTML);
+// }
 
-    for (let i=0; i<members.length; i++) {
-        renderMember(i);
-    }
-}
+// function renderEvents() {
+//     $('#eventContainer').empty();
 
-function renderEmails() {
-    $('#emailContainer').empty();
+//     for (let i=0; i<events.length; i++) {
+//         renderEvent(i);
+//     }
+// }
 
-    for (let i=0; i<emails.length; i++) {
-        let email = emails[i];
-        let id = email['id'];
-        let emailHTML = "<li id='emailAddress"+ id +"'>" +email['email'];
-        emailHTML += "<button class='deleteEmail' id='deleteEmail"+ id +"'>Delete</button>";
-        emailHTML += "</li>";
+// function renderMembers() {
+//     $('#memberContainer').empty();
 
-        $('#emailListContainer').append(emailHTML);
-    }
-    $('.deleteEmail').click(deleteEmail);
-}
+//     for (let i=0; i<members.length; i++) {
+//         renderMember(i);
+//     }
+// }
+
+// function renderEmails() {
+//     $('#emailContainer').empty();
+
+//     for (let i=0; i<emails.length; i++) {
+//         let email = emails[i];
+//         let id = email['id'];
+//         let emailHTML = "<li id='emailAddress"+ id +"'>" +email['email'];
+//         emailHTML += "<button class='deleteEmail' id='deleteEmail"+ id +"'>Delete</button>";
+//         emailHTML += "</li>";
+
+//         $('#emailListContainer').append(emailHTML);
+//     }
+    
+// }
 
 function deleteEmail(e) {
     let id = e.target.id.replace('deleteEmail', '');
@@ -168,26 +173,26 @@ function deleteEmail(e) {
 }
 
 
-function renderSongRequests() {
-    $('#songRequestContainer').empty();
-    for (let i=0; i<songRequests.length; i++) {
-        let songRequest = songRequests[i];
-        let id = songRequest['id'];
-        let songHTML = "<li id='song"+ id + "'>" +songRequest['song']+ " by " +songRequest['artist'];
-        songHTML += "<button class='deleteSong' id='deleteSong"+ id +"'>Delete</button>";
-        songHTML += "</li>";
-        $('#songRequestContainer').append(songHTML);
-    }
+// function renderSongRequests() {
+//     $('#songRequestContainer').empty();
+//     for (let i=0; i<songRequests.length; i++) {
+//         let songRequest = songRequests[i];
+//         let id = songRequest['id'];
+//         let songHTML = "<li id='song"+ id + "'>" +songRequest['song']+ " by " +songRequest['artist'];
+//         songHTML += "<button class='deleteSong' id='deleteSong"+ id +"'>Delete</button>";
+//         songHTML += "</li>";
+//         $('#songRequestContainer').append(songHTML);
+//     }
 
-    $('.deleteSong').click(deleteSongRequest);
-}
+    
+// }
 
 
 function deleteSongRequest(e) {
     let id = e.target.id.replace('deleteSong', '');
     $.get(deleteURL, {id: id, type: 'songRequest'}, function(data) {
         if (data == 'success') {
-            $('#song'+id).remove();
+            $('#songRequest'+id).remove();
         } else {
             alert(data);
         }   
@@ -210,6 +215,18 @@ function addEvent(){
         processData: false,
         contentType: false,
         success: function(data) {
-            console.log(data);
+            if(data == 'success') {
+                renderEvents();
+            } else {
+                alert(data);
+            }
         }});
+}
+
+function renderEvents() {
+    $('#eventContainer').empty();
+
+    $.get(eventURL, function(data) {
+        $('#eventContainer').html(data);
+    });
 }

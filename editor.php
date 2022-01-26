@@ -1,0 +1,186 @@
+<?php
+
+try {
+
+    $db = new PDO('mysql:host=localhost;dbname=ebwrig23', 'ebwrig23', 'etzi9ajgv3');
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $tables = ['events', 'members', 'email', 'songRequest'];
+    $data = [];
+    foreach($tables as $table){
+        $sql = "SELECT * FROM $table";
+        $results = $db->query($sql);
+        $data[$table] = $results->fetchAll();
+    }
+
+    $about = json_decode(file_get_contents('about.json'), true);
+
+
+} catch (PDOException $e) {
+    echo "An error has occured on the server. Please try again later.";
+    die();
+}
+
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/editor.js"></script>
+    <link rel="stylesheet" href="css/editor.css">
+    <title>Webpage Editor</title>
+    
+</head>
+<body>
+    
+    <details>
+        <summary>Events</summary>
+        <details>
+            <summary>Add Event</summary>
+            <form id="addEvent">
+                <label for="title">Event Name</label>
+                <input type="text" name="title" id="title" required><br>
+                <label for="date">Event Date</label>
+                <input type="date" id="date" name="date" required>
+                <label for="time">Event Time</label>
+                <input type="time"id="time" name="time" required><br>
+                <label for="location">Event Location</label>
+                <input type="text" name="location"required><br>
+                <p>Small event description will apear on home page, large will apear on full events page</p>
+                <label for="contentSmall">Event Description Small</label>
+                <textarea name="contentSmall" required></textarea><br>
+                <label for="contentLarge">Event Description Large</label>
+                <textarea name="contentLarge" required></textarea><br>
+
+                <p>Event images must be hosted off server. 
+                There are many services that do image hosting, including google drive. 
+                <a href="https://projects.raspberrypi.org/en/projects/generic-google-drive-image">here</a> 
+                is a tutorial on how to do that.</p>
+                <label for="image">Link to Event Image</label>
+                <input type="text" name="image" id="eventImageInput" required><br>
+                <div id="eventImageContainer"></div>
+                <button type="submit">Add Event</button>
+                <button type="reset">Clear</button>
+            </form>
+        </details>
+
+        <details>
+            <summary>Edit Events</summary>
+            <div id="eventContainer">
+                <?php
+                foreach($data['events'] as $event){
+                    $date = date('d F Y H:i', $event['date']);
+                    $datetime = date('Y-m-d H:i:s', $event['date']);
+                    ?>
+            
+                    <div class="event" id="<?php echo $event['id'];?>">
+                        <h3><?php echo $event['title'];?></h3>
+                        <img src="<?php echo $event['image'];?>" alt="eventImage">
+                        <p><?php echo $event['location'];?></p>
+                        <time datetime="<?php echo $datetime;?>"><?php echo $date;?></time>
+                        <p><?php echo $event['contentSmall'];?></p>
+                        <p><?php echo $event['contentLarge'];?></p>
+                        <button class="editEvent" id="editEvent<?php echo $event['id']; ?>">Edit</button>
+                        <button class="deleteEvent" id="deleteEvent<?php echo $event['id']; ?>">Delete</button>
+                    </div>
+                <?php } ?>
+                
+            </div>
+        </details>
+    </details>
+
+    <details>
+        <summary>Members</summary>
+        <details>
+            <summary>Add Member</summary>
+            <form>
+                <label for="member-firstname">Member First Name</label>
+                <input type="text" id="member-firstname"><br>
+                <label for="member-lastname">Member Last Name</label>
+                <input type="text" id="member-lastname"><br>
+                <label for="class-year">Class Year</label>
+                <input type="number" id="class-year"><br>
+                <label for="bio">Bio</label>
+                <textarea id="bio"></textarea><br>
+                <lable for="member-image">Member Image</lable>
+                <input type="file" id="member-image"><br>
+                <button type="submit">Add Member</button>
+                <button type="reset">Clear</button>
+            </form>
+        </details>
+
+        <details>
+            <summary>Edit Memebers</summary>
+            <div id="memberContainer">
+                <?php
+                foreach($data['members'] as $member){
+                    ?>
+            
+                    <div class="member" id="member<?php echo $member['id'];?>">
+                        <h3><?php echo $member['firstname'] . " " . $member['lastname'];?></h3>
+                        <img src="<?php echo $member['image'];?>" alt="memberImage">
+                        <p><?php echo $member['classYear'];?></p>
+                        <p><?php echo $member['bio'];?></p>
+                        <button class="editMember" id="editMember<?php echo $member['id']; ?>">Edit</button>
+                        <button class="deleteMember" id="deleteMember<?php echo $member['id']; ?>">Delete</button>
+                    </div>
+                <?php } ?>
+            </div>
+        </details>
+    </details>
+
+    <details id="aboutDetails">
+        <summary>Edit About</summary>
+        <form id="editAbout">
+            <label for="content1">Content1: </label>
+            <textarea name="content1" id="content1"><?php echo $about['content1'];?></textarea><br>
+            <label for="content2">Content2: </label>
+            <textarea name="content2" id="content2"><?php echo $about['content2'];?></textarea><br>
+            <label for="content3">Content3: </label>
+            <textarea name="content3" id="content3"><?php echo $about['content3'];?></textarea><br>
+            <p>Current Image</p>
+            <img src="<?php echo $about['image'];?>" alt="aboutImage"><br>
+            <label for="newAboutImage">New Image Upload:</label>
+            <input type="file" name="newAboutImage" id="newAboutImage"><br>
+            <button type="submit">Update</button>
+            <button type="reset">Reset</button>
+        </form>
+
+    </details>
+
+    <details id="emailList">
+        <summary>Email List</summary>
+        <ul id="emailListContainer">
+            <?php 
+            foreach($data['email'] as $email){
+                ?>
+                <li id="emailAddress<?php echo $email['id'];?>">
+                    <?php echo $email['email'];?>
+                    <button class="deleteEmail" id="deleteEmail<?php echo $email['id'];?>">Delete</button>
+                </li>
+            <?php } ?>
+        </ul>
+    </details>
+
+    <details id="songRequests">
+        <summary>Song Requests</summary>
+        <ul id="songRequestContainer">
+            <?php
+            foreach($data['songRequest'] as $song){
+                ?>
+                <li id="songRequest<?php echo $song['id'];?>">
+                    <?php echo $song['song'];?> by <?php echo $song['artist'];?>
+                    <button class="deleteSong" id="deleteSong<?php echo $song['id']; ?>">Delete</button>
+                </li>
+            <?php } ?>
+        </ul>
+    </details>
+
+</body>
+</html>
