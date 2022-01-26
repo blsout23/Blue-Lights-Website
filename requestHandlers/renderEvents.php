@@ -20,6 +20,7 @@ try {
 
 
 function renderEvents($events) {
+
     foreach($events as $event){
         $date = date('d F Y H:i', $event['date']);
         $datetime = date('Y-m-d H:i:s', $event['date']);
@@ -36,6 +37,7 @@ function renderEvents($events) {
             <button class="deleteEvent" id="deleteEvent<?php echo $event['id']; ?>">Delete</button>
         </div>
     <?php }
+    return;
 } 
 
 

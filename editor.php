@@ -1,5 +1,7 @@
 <?php
 
+include requestHandlers/renderEvents.php;
+
 try {
 
     $db = new PDO('mysql:host=localhost;dbname=ebwrig23', 'ebwrig23', 'etzi9ajgv3');
@@ -73,7 +75,7 @@ try {
         <details>
             <summary>Edit Events</summary>
             <div id="eventContainer">
-                <?php
+            <?php
                 foreach($data['events'] as $event){
                     $date = date('d F Y H:i', $event['date']);
                     $datetime = date('Y-m-d H:i:s', $event['date']);
