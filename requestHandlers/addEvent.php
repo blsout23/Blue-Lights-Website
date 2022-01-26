@@ -1,11 +1,5 @@
 <?php 
 
-ini_set('upload_tmp_dir', '/tmpFileUpload');
-putenv('TMPDIR=/tmpFileUpload');
-echo "upload_tmp_dir: " . ini_get('upload_tmp_dir') . "\n";
-echo "TMPDIR: " . ini_get('sys_temp_dir') . "\n";
-echo "php.ini: " . php_ini_loaded_file() . "\n";
-
 $data = array();
 
 foreach ($_POST as $key => $value) {
@@ -15,7 +9,6 @@ foreach ($_POST as $key => $value) {
 $data['date'] = $data['UNIXtime'];
 
 $image = processImage();
-phpinfo();
 if ($image === false) { ?>
     <p class="addEventError">
         There was an error uploading your image. Please make sure it is

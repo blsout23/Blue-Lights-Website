@@ -2,18 +2,27 @@
 
 'use strict';
 
+<<<<<<< HEAD
 var eventURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/eventDataRequest.php";
 var memberURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/memberDataRequest.php";
 var aboutURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/aboutDataRequest.php";
 var emailURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/getEmailList.php";
 var songRequestURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/getSongRequests.php";
 var deleteURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/delete.php";
+=======
+var eventURL = "https://cs325.colby.edu/ebwrig23/bluelights/eventDataRequest.php";
+var memberURL = "https://cs325.colby.edu/ebwrig23/bluelights/memberDataRequest.php";
+var aboutURL = "https://cs325.colby.edu/ebwrig23/bluelights/aboutDataRequest.php";
+>>>>>>> 4bab7519a10ec154d3b0492c00d46f9e125ab754
 
 var members;
 var events;
 var about;
+<<<<<<< HEAD
 var emails;
 var songRequests;
+=======
+>>>>>>> 4bab7519a10ec154d3b0492c00d46f9e125ab754
 
 $(document).ready(function() {
 
@@ -28,8 +37,15 @@ $(document).ready(function() {
     });
 
     $( "#eventSubmit" ).click(function() {
+<<<<<<< HEAD
         addEvent();   
     });
+=======
+        console.log("button clicked");
+        addEvent();   
+    });
+
+>>>>>>> 4bab7519a10ec154d3b0492c00d46f9e125ab754
 });
 
 function getData(){
