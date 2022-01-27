@@ -19,6 +19,7 @@ try {
 
 
 } catch (PDOException $e) {
+    echo $e->getMessage();
     echo "An error has occured on the server. Please try again later.";
     die();
 }
@@ -151,13 +152,17 @@ try {
             <label for="content3">Content3: </label>
             <textarea name="content3" id="content3"><?php echo $about['content3'];?></textarea><br>
             <p>Current Image</p>
-            <img src="<?php echo $about['image'];?>" alt="aboutImage"><br>
+            <img src="<?php echo $about['image'];?>" alt="aboutImage" id="aboutImagePreview"><br>
+            <p>Event images must be hosted off server. 
+            There are many services that do image hosting, including google drive. 
+            <a href="https://projects.raspberrypi.org/en/projects/generic-google-drive-image">here</a> 
+            is a tutorial on how to do that.</p>
             <label for="newAboutImage">New Image Upload:</label>
-            <input type="file" name="newAboutImage" id="newAboutImage"><br>
-            <button type="submit">Update</button>
+            <input type="text" name="newAboutImage" id="aboutImage" value="<?php echo $about['image']; ?>"><br>
+            <button type="submit" id="aboutSubmit">Update</button>
             <button type="reset">Reset</button>
         </form>
-
+        <div id="aboutMessageContainer"></div>
     </details>
 
     <details>
