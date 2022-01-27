@@ -63,7 +63,7 @@ try {
 
                 <p>Event images must be hosted off server. 
                 There are many services that do image hosting, including google drive. 
-                <a href="https://projects.raspberrypi.org/en/projects/generic-google-drive-image">here</a> 
+                <a href="https://projects.raspberrypi.org/en/projects/generic-google-drive-image">Here</a> 
                 is a tutorial on how to do that.</p>
                 <label for="image">Link to Event Image</label>
                 <input type="text" name="image" id="eventImageInput" required><br>
