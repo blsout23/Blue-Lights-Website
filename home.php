@@ -35,7 +35,7 @@
     ?>
         
     <section class="eventsPreview">
-        <a href="events.html"><h2>Upcoming Events</h2></a>
+        <a href="events.php"><h2>Upcoming Events</h2></a>
         <?php
         foreach($eventsData as $event){
             $date = date('d F H:i', $event['date']);
