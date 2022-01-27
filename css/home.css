@@ -40,12 +40,10 @@ h2 {
     padding:10px;
 }
 
-#fakeImage {
-    background-color: red;
-    width: 30%;
-    height: 150px;
+.realImage {
+    width: 125px;
+    height: 175px;
     display: inline-block;
-    color:white;
 }
 
 .eventTitle {

@@ -16,22 +16,37 @@
 <body>
     <?php
         echo file_get_contents("header.html");
-    ?>
-    
-    <section class=event>
-        <h2>Blue Lights Auditions</h2>
-        <div id="fakeImage">image here</div>
-        <div class="eventText">
-            <p>Come on down for audtions to join the Colby Blue Lights. All are welcome, no skill required. Sign up for auditons <a href="https://google.com">here</a>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero aliquam aperiam, debitis ea expedita eum quisquam fugit placeat repellat dolore quam cum sequi ratione, vero ullam quia vel deleniti dicta. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita, exercitationem omnis. Quaerat officiis reprehenderit voluptatibus eius commodi totam inventore doloribus. Consectetur asperiores doloribus tenetur, delectus officiis fugiat beatae explicabo sunt.</p>
-            <div class="eventDetails">
-                <time datetime="2022-02-10 17:00">Febuary 10th, 5 pm</time>
-                <p>Event Location</p> 
-            </div>  
-        </div>
-    </section>
+        try {
 
-    <h2>Past Events</h2>
+            $db = new PDO('mysql:host=localhost;dbname=ebwrig23', 'ebwrig23', 'etzi9ajgv3');
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "SELECT * FROM events";
+            $results = $db->query($sql);
+            $eventsData = $results->fetchAll();
+        
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            die();
+        }
+
+        foreach($eventsData as $event){
+            $date = date('d F H:i', $event['date']);
+            $datetime = date('Y-m-d H:i:s', $event['date']);
+            ?>
+    
+            <section class="event" id="<?php echo $event['id'];?>">
+                <h2><?php echo $event['title'];?></h2>
+                <img src="<?php echo $event['image'];?>" alt="eventImage" width="250px" height="350px">
+                <div class="eventText">
+                    <p><?php echo $event['contentLarge'];?></p>
+                    <div class="eventDetails">
+                        <time datetime="<?php echo $datetime;?>"><?php echo $date;?></time>
+                        <p><?php echo $event['location'];?></p>
+                    </div>
+                </div>
+        </section>
+        <?php }
+    ?>
 
     <div class="footerSpacer"></div>
 

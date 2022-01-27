@@ -16,12 +16,25 @@
 <body>
     <?php
         echo file_get_contents("header.html");
+        try {
+
+            $db = new PDO('mysql:host=localhost;dbname=ebwrig23', 'ebwrig23', 'etzi9ajgv3');
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "SELECT * FROM videos";
+            $results = $db->query($sql);
+            $videoData = $results->fetchAll();
+        
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            die();
+        }
     ?>
     <div id="videos">
-        <iframe src="https://www.youtube.com/embed/2e5tAlelJXc"></iframe>
-        <iframe src="https://www.youtube.com/embed/JurGajlyEew"></iframe>
-        <iframe src="https://www.youtube.com/embed/T28LyXf8MlU"></iframe>
+    <?php foreach($videoData as $video){ ?>
+        <iframe src="<?php echo $video['url'];?>"></iframe>
+        <?php } ?>
     </div>
+
     <div class="footerSpacer"></div>
 
     <?php
