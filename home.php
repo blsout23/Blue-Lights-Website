@@ -17,23 +17,45 @@
 <body>
     <?php
         echo file_get_contents("header.html");
+        try {
+
+            $db = new PDO('mysql:host=localhost;dbname=ebwrig23', 'ebwrig23', 'etzi9ajgv3');
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "SELECT * FROM events";
+            $results = $db->query($sql);
+            $eventsData = $results->fetchAll();
+            $sql = "SELECT * FROM members";
+            $results = $db->query($sql);
+            $memberData = $results->fetchAll();
+        
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            die();
+        }
     ?>
         
     <section class="eventsPreview">
-        <h2>Upcoming Events</h2>
-        <a href="events.html">
-        <div class="eventSmall">
-            <h2 class="eventTitle">Blue Lights Auditions</h2>
-            <div id="fakeImage">image here</div>
-            <div class="eventText">
-                <p>Come on down for audtions to join the Colby Blue Lights. All are welcome, no skill required. Sign up for auditons <a href="https://google.com">here</a></p>
-                <div class="eventDetails">
-                    <time datetime="2022-02-10 17:00">Febuary 10th, 5 pm</time>
-                    <p>Event Location</p> 
+        <a href="events.html"><h2>Upcoming Events</h2></a>
+        <?php
+        foreach($eventsData as $event){
+            $date = date('d F H:i', $event['date']);
+            $datetime = date('Y-m-d H:i:s', $event['date']);
+            ?>
+    
+            <div class="eventSmall" id="<?php echo $event['id'];?>">
+                <h2 class="eventTitle"><?php echo $event['title'];?></h2>
+                <img class="realImage" src="<?php echo $event['image'];?>" alt="eventImage">
+                <div class="eventText">
+                    <p><?php echo $event['contentSmall'];?></p>
+                    <div class="eventDetails">
+                        <time datetime="<?php echo $datetime;?>"><?php echo $date;?></time>
+                        <p><?php echo $event['location'];?></p>
+                    </div>
                 </div>
             </div>
-        </div>
-        </a>
+        <?php } ?>
+        
+        
     </section>
 
     <section class="aboutPreview">
@@ -49,31 +71,16 @@
     <section class="membersPreview">
         <h2>Members</h2>
         <div id="membersContainer">
+        <?php
+        foreach($memberData as $member){
+            ?>
+
             <div class="member">
-                <img class="memberPic" src="css/media/profile1.jpg">
-                <p class="name">Dave Phillips</p>
-                <p class="classYear">'23</p>
+                <img class="memberPic" src="<?php echo $member['image'];?>" alt="memberImage">
+                <p class="name"><?php echo $member['firstName'] . " " . $member['lastName'];?></p>
+                <p class="classYear"><?php echo $member['classYear'];?></p>
             </div>
-        
-            <div class="member">
-                <img class="memberPic" src="css/media/profile1.jpg">
-                <p class="name">Dave Phillips</p>
-                <p class="classYear">'23</p>
-            </div>
-        
-            <div class="member">
-                <img class="memberPic" src="css/media/profile1.jpg">
-                <p class="name">Dave Phillips</p>
-                <p class="classYear">'23</p>
-            </div>
-        
-            <div class="member">
-                <img class="memberPic" src="css/media/profile1.jpg">
-                <p class="name">Dave Phillips</p>
-                <p class="classYear">'23</p>
-            </div>
-        </div>
-        
+        <?php } ?>
     </section>
     
     <?php
