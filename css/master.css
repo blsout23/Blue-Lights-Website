@@ -133,7 +133,7 @@ footer {
 }
 
 footer p {
-    font-size: 1.5vw;
+    font-size: 14pt;
     width:20%;
     margin-left: 10px;
 }
@@ -148,6 +148,23 @@ input {
 
 input:focus {
     outline: none;
+}
+
+#emailMessageContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.emailMessage {
+    font-size: 12pt;
+    font-family: 'Varela Round', sans-serif;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 0; 
 }
 
 #emailButton {
