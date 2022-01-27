@@ -134,6 +134,7 @@ function addMember(e) {
             console.log(data);
             if(data == 'success') {
                 renderMembers();
+                $('#addEvent')[0].reset();
             } else {
                 alert(data);
             }
