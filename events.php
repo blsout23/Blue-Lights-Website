@@ -42,7 +42,6 @@
                     <div class="eventDetails">
                         <time datetime="<?php echo $datetime;?>"><?php echo $date;?></time>
                         <p><?php echo $event['location'];?></p>
-                        <p><?php echo $datetime . $date . $event['date'] ?></p>
                     </div>
                 </div>
         </section>
