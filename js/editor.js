@@ -3,17 +3,22 @@
 'use strict';
 
 var eventURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/renderEvents.php";
-var memberURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/memberDataRequest.php";
+
+var addMemberURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/addMember.php";
+var memberURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/renderMembers.php";
+
 var aboutURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/aboutDataRequest.php";
+
 var emailURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/getEmailList.php";
+
 var songRequestURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/getSongRequests.php";
+
 var deleteURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/delete.php";
 
-var members;
-var events;
-var about;
-var emails;
-var songRequests;
+
+var videoURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/renderVideos.php";
+var addVideoURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/addVideo.php";
+
 
 $(document).ready(function() {
 
@@ -36,6 +41,10 @@ $(document).ready(function() {
     $('.deleteEmail').click(deleteEmail);
     $('.deleteSong').click(deleteSongRequest);
     $('.deleteEvent').click(deleteEvent);
+    $('#addVideoSubmit').click(addVideo);
+    $('.deleteVideo').click(deleteVideo);
+    $('#memberSubmit').click(addMember);
+    $('.deleteMember').click(deleteMember);
 });
 
 function deleteEvent(e) {
@@ -104,5 +113,94 @@ function renderEvents() {
     $.get(eventURL, function(data) {
         $('#eventContainer').html(data);
         $('.deleteEvent').click(deleteEvent);
+    });
+}
+
+function addMember(e) {
+    e.preventDefault();
+    $.ajax({
+        url: addMemberURL,
+        type: 'POST',
+        data: {
+            firstName: $('#firstName').val(),
+            lastName: $('#lastName').val(),
+            bio: $('#bio').val(),
+            image: $('#memberImage').val(),
+            classYear: $('#classYear').val()
+        },
+        success: function(data) {
+            console.log(data);
+            if(data == 'success') {
+                renderMembers();
+            } else {
+                alert(data);
+            }
+        }
+    });
+}
+
+function renderMembers(){
+    $('#memberContainer').empty();
+
+    $.get(memberURL, function(data) {
+        $('#memberContainer').html(data);
+        $('.deleteMember').click(deleteMember);
+    });
+}
+
+function deleteMember(e) {
+    let id = e.target.id.replace('deleteMember', '');
+    $.get(deleteURL, {id: id, type: 'members'}, function(data) {
+        if (data == 'success') {
+            renderMembers();
+        } else {
+            alert(data);
+        }
+    });
+}
+
+
+function addVideo(e) {
+    e.preventDefault();
+    let newLink = $('#video-link').val().replace('watch?v=', 'embed/');
+
+    $.ajax({
+        url: addVideoURL,
+        type: 'POST',
+        data: {
+            title: $( "#video-title" ).val(),
+            link: newLink
+        },
+        success: function(data) {
+            if(data == 'success') {
+                renderVideos();
+            } else {
+                alert(data);
+            }
+        }
+    });
+
+    $('#video-link').val('');
+    $('#video-title').val('');
+}
+
+function renderVideos() {
+    $('#videoContainer').empty();
+
+    $.get(videoURL, function(data) {
+        $('#videoContainer').html(data);
+        $('.deleteVideo').click(deleteVideo);
+    });
+}
+
+function deleteVideo(e) {
+    let id = e.target.id.replace('deleteVideo', '');
+    $.get(deleteURL, {id: id, type: 'videos'}, function(data) {
+        if (data == 'success') {
+            renderVideos();
+            console.log('deleted');
+        } else {
+            alert(data);
+        }   
     });
 }

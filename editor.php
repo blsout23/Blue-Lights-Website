@@ -7,7 +7,7 @@ try {
     $db = new PDO('mysql:host=localhost;dbname=ebwrig23', 'ebwrig23', 'etzi9ajgv3');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $tables = ['events', 'members', 'email', 'songRequest'];
+    $tables = ['events', 'members', 'email', 'songRequest', 'videos'];
     $data = [];
     foreach($tables as $table){
         $sql = "SELECT * FROM $table";
@@ -101,18 +101,22 @@ try {
         <summary>Members</summary>
         <details>
             <summary>Add Member</summary>
-            <form>
-                <label for="member-firstname">Member First Name</label>
-                <input type="text" id="member-firstname"><br>
-                <label for="member-lastname">Member Last Name</label>
-                <input type="text" id="member-lastname"><br>
-                <label for="class-year">Class Year</label>
-                <input type="number" id="class-year"><br>
+            <form id="addMember">
+                <label for="firstName">Member First Name</label>
+                <input type="text" name='firstName' id="firstName"><br>
+                <label for="lastName">Member Last Name</label>
+                <input type="text" name='lastName'  id="lastName"><br>
+                <label for="classYear">Class Year</label>
+                <input type="number" id="classYear" name="classYear"><br>
                 <label for="bio">Bio</label>
-                <textarea id="bio"></textarea><br>
-                <lable for="member-image">Member Image</lable>
-                <input type="file" id="member-image"><br>
-                <button type="submit">Add Member</button>
+                <textarea id="bio" name="bio"></textarea><br>
+                <p>Event images must be hosted off server. 
+                There are many services that do image hosting, including google drive. 
+                <a href="https://projects.raspberrypi.org/en/projects/generic-google-drive-image">here</a> 
+                is a tutorial on how to do that.</p>
+                <label for="image">Link to Member Image</label>
+                <input type="text" id="memberImage" name="image"><br>
+                <button type="submit" id="memberSubmit">Add Member</button>
                 <button type="reset">Clear</button>
             </form>
         </details>
@@ -120,12 +124,12 @@ try {
         <details>
             <summary>Edit Memebers</summary>
             <div id="memberContainer">
-                <?php
+            <?php
                 foreach($data['members'] as $member){
                     ?>
             
                     <div class="member" id="member<?php echo $member['id'];?>">
-                        <h3><?php echo $member['firstname'] . " " . $member['lastname'];?></h3>
+                        <h3><?php echo $member['firstName'] . " " . $member['lastName'];?></h3>
                         <img src="<?php echo $member['image'];?>" alt="memberImage">
                         <p><?php echo $member['classYear'];?></p>
                         <p><?php echo $member['bio'];?></p>
@@ -155,6 +159,31 @@ try {
         </form>
 
     </details>
+
+    <details>
+        <summary>Edit Videos</summary>
+        <form id="addVideo">
+            <label for="video-title">Video Title</label>
+            <input type="text" name="title" id="video-title"><br>
+            <label for="video-link">Video Link (from youtube)</label>
+            <input type="text" name="link" id="video-link"><br>
+            <button type="submit" id='addVideoSubmit'>Add Video</button>
+            <button type="reset">Clear</button>
+        </form>
+
+        <div id="videoContainer">
+            <?php
+            foreach($data['videos'] as $video){
+                ?>
+                <div class="video" id="video<?php echo $video['id'];?>">
+                    <h3><?php echo $video['title'];?></h3>
+                    <iframe width="560" height="315" src="<?php echo $video['url'];?>" frameborder="0" allowfullscreen></iframe>
+                    <button class="deleteVideo" id="deleteVideo<?php echo $video['id']; ?>">Delete</button>
+                </div>
+            <?php } ?>
+        </div>
+    </details>
+
 
     <details id="emailList">
         <summary>Email List</summary>
