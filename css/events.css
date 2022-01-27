@@ -11,14 +11,6 @@ h2 {
     margin-bottom: 10px;
 }
 
-#fakeImage {
-    background-color: red;
-    width: 20%;
-    height: 350px;
-    display: inline-block;
-    color:white;
-}
-
 .eventText {
     float: right;
     width: 78%;
