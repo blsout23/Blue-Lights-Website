@@ -20,7 +20,7 @@
     
     <section class="box">
         <h2>About the Blue Lights</h2>
-        <img class="groupPic" alt="group picture" src="css/media/group1.JPG">
+        <img class="groupPic" alt="group picture" src="css/media/group1.jpg">
         <div class="boxText">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Integer feugiat scelerisque varius morbi enim nunc. Mauris pharetra et ultrices neque ornare aenean euismod elementum. Non sodales neque sodales ut etiam. Amet venenatis urna cursus eget nunc scelerisque viverra. Sagittis nisl rhoncus mattis rhoncus urna neque. Volutpat diam ut venenatis tellus in metus. Laoreet id donec ultrices tincidunt. Et magnis dis parturient montes. Posuere morbi leo urna molestie. Elementum curabitur vitae nunc sed velit dignissim sodales. Nulla facilisi etiam dignissim diam quis enim. Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit. Etiam non quam lacus suspendisse faucibus interdum. Lacus suspendisse faucibus interdum posuere lorem ipsum dolor sit.</p>
 
