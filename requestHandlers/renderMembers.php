@@ -1,5 +1,13 @@
 <?php
+/*
+Colby Blue Lights Website
+CS325 - Final Project
+Ben Southwick, Emerson Wright
 
+Returns the HTML for members displayed in editor
+This happens when an member is deleted or added in order to 
+render the current state of the database
+*/ 
 try {
     $db = new PDO('mysql:host=localhost;dbname=ebwrig23', 'ebwrig23', 'etzi9ajgv3');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

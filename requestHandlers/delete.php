@@ -1,4 +1,12 @@
 <?php 
+/*
+Colby Blue Lights Website
+CS325 - Final Project
+Ben Southwick, Emerson Wright
+
+deletes the row with 'id' from the table 'type'
+both need to be sent in GET request
+*/ 
 if(isset($_GET['id']) && isset($_GET['type'])){
     $type = $_GET['type'];
     $id = $_GET['id'];

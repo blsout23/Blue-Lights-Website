@@ -11,10 +11,6 @@ var memberURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/ren
 var aboutURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/aboutDataRequest.php";
 var updateAboutURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/updateAbout.php";
 
-var emailURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/getEmailList.php";
-
-var songRequestURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/getSongRequests.php";
-
 var videoURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/renderVideos.php";
 var addVideoURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/addVideo.php";
 

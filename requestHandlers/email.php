@@ -1,5 +1,13 @@
 <?php 
+/*
+Colby Blue Lights Website
+CS325 - Final Project
+Ben Southwick, Emerson Wright
 
+Add email to the database
+expects:
+    $_POST['email']
+*/ 
 $dbPASSWD = "etzi9ajgv3";
 
 $email = $_POST['email'];

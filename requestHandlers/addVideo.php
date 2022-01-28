@@ -1,5 +1,13 @@
 <?php 
+/*
+Colby Blue Lights Website
+CS325 - Final Project
+Ben Southwick, Emerson Wright
 
+Adds video from editor to database
+expects $_POST['link'] to be the video url for embeding
+expects $_POST['title'] to be the video title
+*/ 
 $data = array();
 
 foreach ($_POST as $key => $value) {

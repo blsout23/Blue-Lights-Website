@@ -1,5 +1,13 @@
 <?php 
+/*
+Colby Blue Lights Website
+CS325 - Final Project
+Ben Southwick, Emerson Wright
 
+Adds song request to database
+expects $_POST['song'] to be the song name
+expects $_POST['artist'] to be the artist name
+*/ 
 $dbPASSWD = "etzi9ajgv3";
 
 $song = $_POST['song'];

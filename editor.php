@@ -89,7 +89,6 @@ try {
                         <time datetime="<?php echo $datetime;?>"><?php echo $date;?></time>
                         <p><?php echo $event['contentSmall'];?></p>
                         <p><?php echo $event['contentLarge'];?></p>
-                        <button class="editEvent" id="editEvent<?php echo $event['id']; ?>">Edit</button>
                         <button class="deleteEvent" id="deleteEvent<?php echo $event['id']; ?>">Delete</button>
                     </div>
                 <?php } ?>
@@ -134,7 +133,6 @@ try {
                         <img src="<?php echo $member['image'];?>" alt="memberImage">
                         <p><?php echo $member['classYear'];?></p>
                         <p><?php echo $member['bio'];?></p>
-                        <button class="editMember" id="editMember<?php echo $member['id']; ?>">Edit</button>
                         <button class="deleteMember" id="deleteMember<?php echo $member['id']; ?>">Delete</button>
                     </div>
                 <?php } ?>

@@ -1,4 +1,17 @@
 <?php 
+/*
+Colby Blue Lights Website
+CS325 - Final Project
+Ben Southwick, Emerson Wright
+
+adds member from editor form to database
+expects:
+    $_POST['firstName']
+    $_POST['lastName']
+    $_POST['bio']
+    $_POST['image']
+    $_POST['classYear']
+*/ 
 
 try {
 
