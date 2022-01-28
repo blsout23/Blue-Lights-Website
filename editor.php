@@ -62,9 +62,9 @@ try {
                 <textarea name="contentLarge" required></textarea><br>
 
                 <p>Event images must be hosted off server. 
-                There are many services that do image hosting, including google drive. 
-                <a href="https://projects.raspberrypi.org/en/projects/generic-google-drive-image">Here</a> 
-                is a tutorial on how to do that.</p>
+                There are many services that do image hosting, 
+                <a href="https://imgbb.com/">Here</a> 
+                is one that works well. Use the HTML embed links.</p>
                 <label for="image">Link to Event Image</label>
                 <input type="text" name="image" id="eventImageInput" required><br>
                 <div id="eventImageContainer"></div>
@@ -112,9 +112,9 @@ try {
                 <label for="bio">Bio</label>
                 <textarea id="bio" name="bio"></textarea><br>
                 <p>Event images must be hosted off server. 
-                There are many services that do image hosting, including google drive. 
-                <a href="https://projects.raspberrypi.org/en/projects/generic-google-drive-image">Here</a> 
-                is a tutorial on how to do that.</p>
+                There are many services that do image hosting, 
+                <a href="https://imgbb.com/">Here</a> 
+                is one that works well. Use the HTML embed links.</p>
                 <label for="image">Link to Member Image</label>
                 <input type="text" id="memberImage" name="image"><br>
                 <button type="submit" id="memberSubmit">Add Member</button>
@@ -145,20 +145,28 @@ try {
     <details id="aboutDetails">
         <summary>Edit About</summary>
         <form id="editAbout">
-            <label for="content1">Content1: </label>
+            <label for="content1">Main page 1: </label>
             <textarea name="content1" id="content1"><?php echo $about['content1'];?></textarea><br>
-            <label for="content2">Content2: </label>
+            <label for="content2">Main page 2: </label>
             <textarea name="content2" id="content2"><?php echo $about['content2'];?></textarea><br>
-            <label for="content3">Content3: </label>
+            <label for="content3">Main page 3: </label>
             <textarea name="content3" id="content3"><?php echo $about['content3'];?></textarea><br>
-            <p>Current Image</p>
-            <img src="<?php echo $about['image'];?>" alt="aboutImage" id="aboutImagePreview"><br>
+            <label for="contentLarge">About Page Content: </label>
+            <textarea name="contentLarge" id="contentLarge"><?php echo $about['contentLarge'];?></textarea><br>
+            <p>Current Main Page Image</p>
+            <img src="<?php echo $about['image1'];?>" alt="aboutImage" id="aboutImagePreview1"><br>
             <p>Event images must be hosted off server. 
-            There are many services that do image hosting, including google drive. 
-            <a href="https://projects.raspberrypi.org/en/projects/generic-google-drive-image">Here</a> 
-            is a tutorial on how to do that.</p>
-            <label for="newAboutImage">New Image Upload:</label>
-            <input type="text" name="newAboutImage" id="aboutImage" value="<?php echo $about['image']; ?>"><br>
+            There are many services that do image hosting, 
+            <a href="https://imgbb.com/">Here</a> 
+            is one that works well. Use the HTML full embed links, 
+            only taking the text inside the src atribute in img tag.</p>
+            <label for="newAboutImage1">New Image Upload:</label>
+            <input type="text" name="newAboutImage1" id="aboutImage1" value="<?php echo $about['image1']; ?>"><br>
+            <p>Current About Page Image</p>
+            <img src="<?php echo $about['image2'];?>" alt="aboutImage" id="aboutImagePreview2"><br>
+            <label for="newAboutImage2">New About Page Image Upload:</label>
+            <input type="text" name="newAboutImage2" id="aboutImage2" value="<?php echo $about['image2']; ?>"><br>
+
             <button type="submit" id="aboutSubmit">Update</button>
             <button type="reset">Reset</button>
         </form>

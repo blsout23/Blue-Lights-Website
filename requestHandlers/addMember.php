@@ -15,8 +15,6 @@ try {
     echo "An error has occured on the server. Please try again later.";
     die();
 
-} catch (PDOException $e) {
-    echo "An error occured on the server, please try again later.";
 }
 
 ?>

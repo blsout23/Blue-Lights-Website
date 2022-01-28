@@ -211,7 +211,7 @@ function deleteVideo(e) {
 
 function updateAbout(e) {
     e.preventDefault();
-    console.log($('#aboutImage').val());
+    console.log($('#aboutImage1').val());
     $.ajax({
         url: updateAboutURL,
         type: 'POST',
@@ -219,13 +219,16 @@ function updateAbout(e) {
             content1: $('#content1').val(),
             content2: $('#content2').val(),
             content3: $('#content3').val(),
-            image: $('#aboutImage').val()
+            contentLarge: $('#contentLarge').val(),
+            image1: $('#aboutImage1').val(),
+            image2: $('#aboutImage2').val(),
         },
         success: function(data) {
             $('#aboutMessageContainer').html('<p id="aboutMessage">' + data + '</p>');
             if(data=='success') {
                 $('#aboutMessage').css('color', 'green');
-                $('#aboutImagePreview').attr('src', $('#aboutImage').val());
+                $('#aboutImagePreview1').attr('src', $('#aboutImage1').val());
+                $('#aboutImagePreview2').attr('src', $('#aboutImage2').val());
             } else {
                 $('#aboutMessage').css('color', 'red');
             }

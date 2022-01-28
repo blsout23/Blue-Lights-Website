@@ -1,6 +1,9 @@
 {
-    "image": "css/media/group4.jpg",
+    "image1": "css/media/group4.jpg",
+    "image2": "css/media/group5.jpg",
     "content1": "Founded in 1994, the Blue Lights are the heartthrobs of Colby's a cappella community.",
     "content2": "The Blue Lights are all about good vibes and performing to entertain, working just hard enough to sound good while still remembering to have fun with it.",
-    "content3": "Read on for concert footage, announcements, and an inside look at what it's like to be a Blue Light."
+    "content3": "Read on for concert footage, announcements, and an inside look at what it's like to be a Blue Light.",
+    "contentLarge": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Integer feugiat scelerisque varius morbi enim nunc. Mauris pharetra et ultrices neque ornare aenean euismod elementum. Non sodales neque sodales ut etiam. Amet venenatis urna cursus eget nunc scelerisque viverra. Sagittis nisl rhoncus mattis rhoncus urna neque. Volutpat diam ut venenatis tellus in metus. Laoreet id donec ultrices tincidunt. Et magnis dis parturient montes. Posuere morbi leo urna molestie. Elementum curabitur vitae nunc sed velit dignissim sodales. Nulla facilisi etiam dignissim diam quis enim. Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit. Etiam non quam lacus suspendisse faucibus interdum. Lacus suspendisse faucibus interdum posuere lorem ipsum dolor sit."
+
 }
