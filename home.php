@@ -1,3 +1,12 @@
+<?php 
+/*
+Colby Blue Lights Website
+CS325 - Final Project
+Ben Southwick, Emerson Wright
+
+Renders the home page using the database
+*/ 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +40,7 @@
             $about = json_decode(file_get_contents('about.json'), true);
         
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            echo 'An error has occured on the server. Please try again later.';
             die();
         }
     ?>

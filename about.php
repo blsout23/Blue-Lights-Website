@@ -1,4 +1,13 @@
 <?php 
+/*
+Colby Blue Lights Website
+CS325 - Final Project
+Ben Southwick, Emerson Wright
+
+About page generated from data in about.json
+*/ 
+
+
 $about = json_decode(file_get_contents('about.json'), true);
 ?>
 

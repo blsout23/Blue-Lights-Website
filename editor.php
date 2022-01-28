@@ -1,5 +1,14 @@
 <?php
 
+/*
+Colby Blue Lights Website
+CS325 - Final Project
+Ben Southwick, Emerson Wright
+
+Editor for admin to interact with database
+All current data is pulled from the db and dipslayed in the editor
+*/ 
+
 include requestHandlers/renderEvents.php;
 
 try {

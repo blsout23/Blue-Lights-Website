@@ -1,4 +1,8 @@
 
+-- Colby Blue Lights Website
+-- CS325 - Final Project
+-- Ben Southwick, Emerson Wright
+
 
 DROP TABLE IF EXISTS email;
 CREATE TABLE email (
