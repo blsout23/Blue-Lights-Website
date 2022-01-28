@@ -1,4 +1,12 @@
+/*
+Colby Blue Lights Website
+CS325 - Final Project
+Ben Southwick, Emerson Wright
 
+JS that handles the editor page
+it makes all the AJAX calls to the server
+Does some form validation, but needs more
+*/
 
 'use strict';
 

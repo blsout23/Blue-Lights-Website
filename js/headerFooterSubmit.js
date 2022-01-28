@@ -1,3 +1,11 @@
+/*
+Colby Blue Lights Website
+CS325 - Final Project
+Ben Southwick, Emerson Wright
+
+JS that handles sending email addresses and song request
+to the server using AJAX for storage in the database
+*/
 
 var emailURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/email.php";
 var songURL = "https://cs325.colby.edu/ebwrig23/bluelights/requestHandlers/song.php";
