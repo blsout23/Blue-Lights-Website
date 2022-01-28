@@ -1,3 +1,7 @@
+<?php 
+$about = json_decode(file_get_contents('about.json'), true);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,15 +24,13 @@
     
     <section class="box">
         <h2>About the Blue Lights</h2>
-        <img class="groupPic" alt="group picture" src="https://i.ibb.co/0Jf3kk0/group1.jpg">
+        <img class="groupPic" alt="group picture" src="<?php echo $about['image2']; ?>">
         <div class="boxText">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Integer feugiat scelerisque varius morbi enim nunc. Mauris pharetra et ultrices neque ornare aenean euismod elementum. Non sodales neque sodales ut etiam. Amet venenatis urna cursus eget nunc scelerisque viverra. Sagittis nisl rhoncus mattis rhoncus urna neque. Volutpat diam ut venenatis tellus in metus. Laoreet id donec ultrices tincidunt. Et magnis dis parturient montes. Posuere morbi leo urna molestie. Elementum curabitur vitae nunc sed velit dignissim sodales. Nulla facilisi etiam dignissim diam quis enim. Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit. Etiam non quam lacus suspendisse faucibus interdum. Lacus suspendisse faucibus interdum posuere lorem ipsum dolor sit.</p>
-
-            <p>Nec sagittis aliquam malesuada bibendum arcu vitae elementum curabitur vitae. Quis commodo odio aenean sed adipiscing. Diam vel quam elementum pulvinar etiam. Pellentesque habitant morbi tristique senectus. Neque viverra justo nec ultrices dui sapien eget mi proin. Diam phasellus vestibulum lorem sed risus ultricies. Ultrices neque ornare aenean euismod. Pretium quam vulputate dignissim suspendisse in est ante in. Aliquam vestibulum morbi blandit cursus risus at. Ac ut consequat semper viverra nam libero justo laoreet. Aliquam sem fringilla ut morbi tincidunt augue interdum velit. Ac orci phasellus egestas tellus rutrum tellus pellentesque eu. Sapien faucibus et molestie ac feugiat sed lectus vestibulum. Felis bibendum ut tristique et egestas quis. Volutpat commodo sed egestas egestas fringilla phasellus faucibus. Libero justo laoreet sit amet cursus. Tempor nec feugiat nisl pretium. Massa sapien faucibus et molestie ac feugiat sed lectus. Mi quis hendrerit dolor magna eget.</p>
+            <p>
+                <?php echo $about['contentLarge']; ?>
+            </p>
         </div>
     </section>
-
-    <div class="footerSpacer"></div>
 
     <?php
         echo file_get_contents("footer.html");

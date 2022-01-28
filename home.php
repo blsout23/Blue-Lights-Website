@@ -27,6 +27,8 @@
             $sql = "SELECT * FROM members";
             $results = $db->query($sql);
             $memberData = $results->fetchAll();
+            
+            $about = json_decode(file_get_contents('about.json'), true);
         
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -59,11 +61,11 @@
     </section>
 
     <section class="aboutPreview">
-        <p id="founded">Founded in 1994, the Blue Lights are the heartthrobs of Colby's a cappella community. </p>
-        <img id="groupPic" alt="group Picture of Blue Lights Group" src="css/media/group4.jpg">
+        <p id="founded"> <?php echo $about['content1']; ?> </p>
+        <img id="groupPic" alt="group Picture of Blue Lights Group" src="<?php echo $about['image1']; ?>">
         <div id="leftPhoto">
-            <p id="vibes">The Blue Lights are all about good vibes and performing to entertain, working just hard enough to sound good while still remembering to have fun with it.</p>
-            <p id="read">Read on for concert footage, announcements, and an inside look at what it's like to be a Blue Light.</p>
+            <p id="vibes"><?php echo $about['content2']; ?></p>
+            <p id="read"><?php echo $about['content3']; ?></p>
         </div>
         
     </section>
